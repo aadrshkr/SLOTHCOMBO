@@ -57,8 +57,9 @@ namespace XIVSlothCombo.Combos.PvP
 
                         if (CanWeave(actionID))
                         {
-                            if (IsOffCooldown(SixSidedStar))
+                            if (IsOffCooldown(SixSidedStar) && (lastComboMove is Demolish))
                                 return OriginalHook(SixSidedStar);
+
 
                             if (IsEnabled(CustomComboPreset.MNKPvP_Burst_RiddleOfEarth) && HasEffect(Buffs.EarthResonance) && GetBuffRemainingTime(Buffs.EarthResonance) < 6)
                                 return OriginalHook(EarthsReply);
@@ -72,7 +73,7 @@ namespace XIVSlothCombo.Combos.PvP
                             if (lastComboMove is Demolish)
                                 return OriginalHook(PhantomRush);
 
-                            if (IsOffCooldown(Enlightenment))
+                            if (IsOffCooldown(Enlightenment) && (lastComboMove is Demolish || (lastComboMove is TrueStrike))
                                 return OriginalHook(Enlightenment);
                         }
                     }
